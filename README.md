@@ -1,5 +1,7 @@
 # Lab example
 
+<img src="https://github.com/GertKanter/autosys/images/screenshot.png" width="400">
+
 ## Running the stack
 Start the Autosys VMWare virtual machine.
 
