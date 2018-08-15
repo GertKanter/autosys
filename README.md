@@ -44,5 +44,5 @@ If you want to run DTRON test with your own model, place the model in the `~/mod
 docker exec -it  testit_dtron bash -c 'source /catkin_ws/devel/setup.bash && rosrun testit_dtron run_dtron_test.sh $(rospack find testit_dtron)/dtron/models/model.xml'
 ```
 
-"" Shutting down the stack
+## Shutting down the stack
 To shut down the stack, just press Ctrl+C in each terminal and that's it (the docker containers are ephemeral and are removed after shutting down).
