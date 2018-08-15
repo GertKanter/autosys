@@ -25,7 +25,9 @@ In the third terminal run DTRON with the example UPPAAL model
 docker exec -it  testit_dtron bash -c 'source /catkin_ws/devel/setup.bash && rosrun testit_dtron run_dtron_test.sh $(rospack find testit_dtron)/dtron/example.xml'
 ```
 
-If you want to run DTRON test with your own model, use this command:
+---
+
+If you want to run DTRON test with your own model, place the model in the `~/models` directory and use this command (change the filename if you need to):
 ```
 docker exec -it  testit_dtron bash -c 'source /catkin_ws/devel/setup.bash && rosrun testit_dtron run_dtron_test.sh $(rospack find testit_dtron)/dtron/models/model.xml'
 ```
