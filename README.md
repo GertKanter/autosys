@@ -1,6 +1,6 @@
 # Lab example
 
-![](https://raw.githubusercontent.com/GertKanter/autosys/tree/master/images/screenshot.png "This is what is looks like")
+![](https://raw.githubusercontent.com/GertKanter/autosys/master/images/screenshot.png "This is what is looks like")
 
 ## Running the stack
 Start the Autosys VMWare virtual machine.
