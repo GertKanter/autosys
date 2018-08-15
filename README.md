@@ -1,6 +1,6 @@
 # Lab example
 
-<img src="https://github.com/GertKanter/autosys/tree/master/images/screenshot.png" width="400">
+![](https://github.com/GertKanter/autosys/tree/master/images/screenshot.png =400x)
 
 ## Running the stack
 Start the Autosys VMWare virtual machine.
