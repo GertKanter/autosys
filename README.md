@@ -12,7 +12,7 @@ rosrun rviz rviz
 
 In the second terminal run the DTRON ROS adapter container with Spread daemon
 ```
-docker run -it --rm --network=host --name testit_dtron testit_dtron:tron_dev /catkin_ws/spread/sbin/spread -n localhost
+docker run -it --rm --network=host -v ~/models:/catkin_ws/src/testit_dtron/testit_dtron/dtron/models --name testit_dtron testit_dtron:tron_dev /catkin_ws/spread/sbin/spread -n localhost
 ```
 
 In another terminal run the DTRON ROS adapter
@@ -20,7 +20,12 @@ In another terminal run the DTRON ROS adapter
 docker exec -it testit_dtron bash -c "source /catkin_ws/devel/setup.bash && roslaunch testit_dtron run_with_load_params.launch"
 ```
 
-In the third terminal run DTRON with the UPPAAL model
+In the third terminal run DTRON with the example UPPAAL model
 ```
-docker exec -it testit_dtron bash -c 'source /catkin_ws/devel/setup.bash && rosrun testit_dtron run_dtron_test.sh $(rospack find testit_dtron)/dtron/model.xml'
+docker exec -it  testit_dtron bash -c 'source /catkin_ws/devel/setup.bash && rosrun testit_dtron run_dtron_test.sh $(rospack find testit_dtron)/dtron/example.xml'
+```
+
+If you want to run DTRON test with your own model, use this command:
+```
+docker exec -it  testit_dtron bash -c 'source /catkin_ws/devel/setup.bash && rosrun testit_dtron run_dtron_test.sh $(rospack find testit_dtron)/dtron/models/model.xml'
 ```
