@@ -8,9 +8,9 @@ There is a free book called "ROS Robot Programming" written by the TB3 developer
 
 A list of [best practices](https://github.com/leggedrobotics/ros_best_practices/wiki) from ETH Zurich Legged Robotics group.
 
-## ROS2
+## Note about ROS2
 
-We're not focusing on ROS2 in this school but you can write the code for the task as a ROS2 node using [this](https://github.com/ros2/ros2/wiki/Colcon-Tutorial) tutorial.
+We're not focusing on ROS2 in this school but you can write the code for the task as a ROS2 node using [this](https://github.com/ros2/ros2/wiki/Colcon-Tutorial) tutorial. As there are very few guides/materials about ROS2 and ROS2 is still under heavy development it is not recommended for inexperienced developers (this is especially true for testing).
 
 # Unit testing in ROS
 
