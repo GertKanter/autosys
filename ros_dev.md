@@ -2,6 +2,8 @@
 
 Dev for ROS [lecture slides](http://courses.csail.mit.edu/6.141/spring2012/pub/lectures/Lec06-ROS.pdf) from MIT.
 
+Beginner tutorials for developing in Python are [here](http://wiki.ros.org/rospy_tutorials/Tutorials).
+
 There is a free book called "ROS Robot Programming" written by the TB3 developers (published by ROBOTIS). You can get a copy of the book [here](https://community.robotsource.org/t/download-the-ros-robot-programming-book-for-free/51).
 
 [Developer guide](http://wiki.ros.org/DevelopersGuide) for ROS1.
