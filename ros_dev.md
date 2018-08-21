@@ -1,6 +1,6 @@
 # Development in ROS
 
-You can get a copy of a free book [here](http://dijkstra.cs.ttu.ee/~Gert.Kanter/autosys/ROS_Robot_Programming_EN.pdf).
+You can get a copy of a free book [here](http://dijkstra.cs.ttu.ee/~Gert.Kanter/autosys/) written by TB3 developers (published by ROBOTIS).
 
 [Developer guide](http://wiki.ros.org/DevelopersGuide) for ROS1.
 
