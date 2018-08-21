@@ -6,6 +6,10 @@ See the documentation [here](lab_stack.md)
 
 ## Task
 
+### ROS Development
+
+Get started [here](ros_dev.md)
+
 ### Overview
 
 The task is to create a ROS package to give an alert whenever an object is too close to the robot. The input to the algorithm is the sensor data from LIDAR (type `LaserScan`).
