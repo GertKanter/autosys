@@ -2,7 +2,7 @@
 
 Dev for ROS [lecture slides](http://courses.csail.mit.edu/6.141/spring2012/pub/lectures/Lec06-ROS.pdf) from MIT.
 
-You can get a copy of a free book [here](http://dijkstra.cs.ttu.ee/~Gert.Kanter/autosys/) written by TB3 developers (published by ROBOTIS).
+There is a free book called "ROS Robot Programming" written by the TB3 developers (published by ROBOTIS). You can get a copy of the book [here](https://community.robotsource.org/t/download-the-ros-robot-programming-book-for-free/51).
 
 [Developer guide](http://wiki.ros.org/DevelopersGuide) for ROS1.
 
