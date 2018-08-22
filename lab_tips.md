@@ -22,7 +22,7 @@ First we need to share a host volume (a VM directory) with the docker container.
 docker run -v ~/shared:/shared -it --rm stage bash
 ```
 After running that command the directory `shared` in the user's home directory (in this case `/home/user/`) is shared into the docker container.
-The files placed into `/home/user/shared` will appear in `/shared` inside the docker container.
+The files placed into `/home/user/shared` will appear in `/shared` inside the docker container (and vice versa).
 
 Now you can put the files you want to inject into the container inside this shared directory. Copy them to the desired place inside the container and then save the container state (with the `docker commit` command).
 
