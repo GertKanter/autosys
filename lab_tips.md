@@ -1,5 +1,7 @@
 # Tips for lab
 
+You don't need to inject new nodes into Docker containers. You can create the new package in the host machine (the VM) and run it directly from the VM(same for object detector node).
+
 ## How to save the changes you've made in the Docker container
 You can save the changes you've made to the files by using
 ```
@@ -26,6 +28,6 @@ Now you can put the files you want to inject into the container inside this shar
 
 ## Repositories used in the lab
 
-[https://github.com/GertKanter/robots_stage](https://github.com/GertKanter/robots_stage) - Stage simulator files/config
-[https://github.com/GertKanter/autosys-object-detector](https://github.com/GertKanter/autosys-object-detector) - The skeleton for object detector node
-[https://github.com/GertKanter/testit_dtron](https://github.com/GertKanter/testit_dtron) - TestIt DTRON extension (the UPPAAL adapter)
+* [https://github.com/GertKanter/robots_stage](https://github.com/GertKanter/robots_stage) - Stage simulator files/config
+* [https://github.com/GertKanter/autosys-object-detector](https://github.com/GertKanter/autosys-object-detector) - The skeleton for object detector node
+* [https://github.com/GertKanter/testit_dtron](https://github.com/GertKanter/testit_dtron) - TestIt DTRON extension (the UPPAAL adapter)
