@@ -22,16 +22,16 @@ The package should be named `proximity_alert`.
 
 The package input (by default) should be from the robot namespace topic named `base_scan`. You need to pay attention to namespaces as the global topic name is `/robot_0/base_scan` (it could `robot_0`, `robot_1`, `or_whatever_else`).
 
-The input message type is `sensor_msgs/LaserScan`. Link to [definition](http://docs.ros.org/melodic/api/sensor_msgs/html/msg/LaserScan.html).
+The input message type is `sensor_msgs/LaserScan`. [Link to definition](http://docs.ros.org/melodic/api/sensor_msgs/html/msg/LaserScan.html).
 
-The output of the algorithm should be published as a Boolean message (`std_msgs/Bool`). Link to [definition](http://docs.ros.org/api/std_msgs/html/msg/Bool.html). The result should be `false` if there are no obstacles detected and `true` if there is an obstacle closer than the specified distance.
+The output of the algorithm should be published as a Boolean message (`std_msgs/Bool`). [Link to definition](http://docs.ros.org/api/std_msgs/html/msg/Bool.html). The result should be `false` if there are no obstacles detected and `true` if there is an obstacle closer than the specified distance.
 
 The alert distance should be customizable (e.g., passed as a variable on start-up) and by default should be 2.0 meters.
 
 The output should be published 10 times per second.
 
 ### Task levels
-#### Level 1 (minimum)
+#### Basic level
 The package subscribes to the LIDAR data as specified and outputs the result as specified in the previous section.
 
 #### Task extension options

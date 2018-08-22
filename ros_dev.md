@@ -2,6 +2,8 @@
 
 Dev for ROS [lecture slides](http://courses.csail.mit.edu/6.141/spring2012/pub/lectures/Lec06-ROS.pdf) from MIT.
 
+ROS tutorials [link](http://wiki.ros.org/ROS/Tutorials)
+
 Beginner tutorials for developing in Python are [here](http://wiki.ros.org/rospy_tutorials/Tutorials).
 
 There is a free book called "ROS Robot Programming" written by the TB3 developers (published by ROBOTIS). You can get a copy of the book [here](https://community.robotsource.org/t/download-the-ros-robot-programming-book-for-free/51).
@@ -52,3 +54,7 @@ Requirements to be considered a 'Level 1' package:
 * Have system tests which cover any scenarios covered in documentation
 * Have system tests for any corner cases encountered during testing
 * Must be >= version 1.0.0
+
+# Testing using rosbag files
+
+To test your node with previously recorded data you can use `rosbag` files. A good example of this is the [AMCL package](https://github.com/ros-planning/navigation/tree/melodic-devel/amcl)
