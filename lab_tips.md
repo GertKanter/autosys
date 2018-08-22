@@ -5,6 +5,10 @@ You can save the changes you've made to the files by using
 ```
 docker commit CONTAINER_NAME IMAGE:TAG
 ```
+You can see what containers are currently running (and their names) with
+```
+docker ps
+```
 For example
 ```
 docker commit happy_student stage:mynewstate
