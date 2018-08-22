@@ -1,14 +1,16 @@
 # Autonomous Systems School
 
-## Lab setup
+## Lab setup and tips
 
-See the documentation [here](lab_stack.md)
+See the documentation [here](lab_stack.md).
+
+See [lab tips](lab_tips.md) for tips.
 
 ## Task
 
 ### ROS Development
 
-Get started [here](ros_dev.md)
+Get started [here](ros_dev.md).
 
 ### Overview
 
@@ -28,7 +30,9 @@ The output of the algorithm should be published as a Boolean message (`std_msgs/
 
 The alert distance should be customizable (e.g., passed as a variable on start-up) and by default should be 2.0 meters.
 
-The output should be published 10 times per second.
+The output topic should be customizable but default is `proximity_alert` in the robot namespace (e.g., `/robot_0/proximity_alert`).
+
+The output should be published 10 times per second (10 Hz rate).
 
 ### Task levels
 #### Basic level
