@@ -1,6 +1,28 @@
 # Tips for lab
 
-You don't need to inject new nodes into Docker containers. You can create the new package in the host machine (the VM) and run it directly from the VM(same for object detector node).
+## The maps sharing commands shown in the lab
+Run the docker container with the `-v` key:
+```
+docker run -v ~/maps:/shared -it --rm --network=host stage bash -c "source /catkin_ws/devel/setup.bash && roslaunch robots_stage stage.launch"
+```
+Connect to the docker container with
+```
+docker exec -it <PRESS-TAB> bash
+```
+Then copy the files inside the docker container
+```
+root@ubuntu:/# cp -r /catkin_ws/src/robots_stage/maps /shared
+```
+Now you can shut down the container (with Ctrl-C)
+Edit the map file `~/maps/autosys/map.png` with `gimp` with
+```
+gimp ~/maps/autosys/map.png
+```
+Re-run the docker container with 
+```
+docker run -v ~/maps:/catkin_ws/src/robots_stage/maps -it --rm --network=host stage bash -c "source /catkin_ws/devel/setup.bash && roslaunch robots_stage stage.launch"
+```
+and the new map will be loaded!
 
 ## How to save the changes you've made in the Docker container
 You can save the changes you've made to the files by using
