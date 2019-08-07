@@ -1,47 +1,62 @@
 # Autonomous Systems School
 
-## Lab setup and tips
+## Development in ROS
 
-See the documentation [here](lab_stack.md).
+Dev for ROS [lecture slides](http://courses.csail.mit.edu/6.141/spring2012/pub/lectures/Lec06-ROS.pdf) from MIT.
 
-See [lab tips](lab_tips.md) for tips.
+ROS tutorials [link](http://wiki.ros.org/ROS/Tutorials)
 
-## Task
+Beginner tutorials for developing in Python are [here](http://wiki.ros.org/rospy_tutorials/Tutorials).
 
-### ROS Development
+There is a free book called "ROS Robot Programming" written by the TB3 developers (published by ROBOTIS). You can get a copy of the book [here](https://community.robotsource.org/t/download-the-ros-robot-programming-book-for-free/51).
 
-Get started [here](ros_dev.md).
+[Developer guide](http://wiki.ros.org/DevelopersGuide) for ROS1.
 
-### Overview
+A list of [best practices](https://github.com/leggedrobotics/ros_best_practices/wiki) from ETH Zurich Legged Robotics group.
 
-The task is to create a ROS package to give an alert whenever an object is too close to the robot. The input to the algorithm is the sensor data from LIDAR (type `LaserScan`).
+### Note about ROS2
 
-As part of the task, you have to create unit tests for the algorithm.
+We're not focusing on ROS2 in this school but a starting point for this journey can be [this](https://github.com/ros2/ros2/wiki/Colcon-Tutorial) tutorial. As there are very few guides/materials about ROS2 and ROS2 is still under heavy development it is not recommended for inexperienced developers (this is especially true for testing).
 
-### Technical details
+## Unit testing in ROS
 
-The package should be named `proximity_alert`.
+[Unit testing](http://wiki.ros.org/action/show/Quality/Tutorials/UnitTesting?action=show&redirect=UnitTesting) tutorial.
 
-The package input (by default) should be from the robot namespace topic named `base_scan`. You need to pay attention to namespaces as the global topic name is `/robot_0/base_scan` (it could `robot_0`, `robot_1`, `or_whatever_else`).
+Good resource for learning "by example" is the [rospy_tutorials](https://github.com/ros/ros_tutorials/tree/melodic-devel/rospy_tutorials)
 
-The input message type is `sensor_msgs/LaserScan`. [Link to definition](http://docs.ros.org/melodic/api/sensor_msgs/html/msg/LaserScan.html).
+### rostest
 
-The output of the algorithm should be published as a Boolean message (`std_msgs/Bool`). [Link to definition](http://docs.ros.org/api/std_msgs/html/msg/Bool.html). The result should be `false` if there are no obstacles detected and `true` if there is an obstacle closer than the specified distance.
+`rostest` is very similar to `roslaunch`. The main difference is that it is designed to launch the tests as well as launching the nodes.
 
-The alert distance should be customizable (e.g., passed as a variable on start-up) and by default should be 2.0 meters.
+Good tutorials available at [ros wiki](http://wiki.ros.org/rostest).
 
-The output topic should be customizable but default is `proximity_alert` in the robot namespace (e.g., `/robot_0/proximity_alert`).
+### Workflow
+In general, for both Python unit and integration tests you want to do the following:
 
-The output should be published 10 times per second (10 Hz rate).
+* Create a class that subclasses from `unittest.TestCase` or other testing framework (e.g., pytest (see this [package](https://github.com/machinekoder/ros_pytest)))
+* Have a bunch of methods with the prefix "test_". Each represents a test case
+* Implement your tests in these methods using the assert*() calls (e.g.self.assertTrue)
+* Integration tests are the same except you create a ROS node handle within the test case and start publishing/subscribing. You perform checks in the exact same way as you do with unittest
+* For integration tests, you also want to add a `add_rostest` to your CMakeLists.txt file.
+* `catkin_make run_tests` in your catkin workspace
 
-### Task levels
-#### Basic level
-The package subscribes to the LIDAR data as specified and outputs the result as specified in the previous section.
+### gtest
 
-#### Task extension options
-Once the basic node is finished, you can extend it as time permits. Some ideas are listed as follows
-- Only give an alert is the obstacle is almost directly ahead of the robot (angle +/- 0.05 rad, customizable)
-- Give an alert whenever you are close to an obstacle that you have observed at any time even if you cannot see the obstacle currently (i.e., the obstacle is behind the robot). To achieve this, you should use the TF library (See [documentation here](http://wiki.ros.org/tf)) and store the objects in memory.
-- Analyze the trajectory of the robot after it has started moving to a goal and stop the robot if you detect that the robot's trajectory will come too close to an obstacle before it actually reaches it (preemptive behavior).
-- Allow specification of the obstacle signature (what kinds of objects are considered obstacles for the proximity alert and which should be ignored). For example, narrow cylinders, cubes, two cylinders side-by-side etc. Also publish the type of the obstacle detected.
-- Add support for multi-robot shared obstacle information. Define a topic and publish the detected objects to this channel and also add new objects that other robots detect.
+`gtest` is used for testing C++ nodes. There is documentation available at the [ros wiki](http://wiki.ros.org/gtest)
+
+### ROS2 notes
+
+There are [guidelines](https://github.com/ros2/ros2/wiki/Developer-Guide#testing) for testing and quality assurance requirements for ROS2 packages.
+
+Requirements to be considered a 'Level 1' package:
+
+* Have a strictly declared public API
+* Have API documentation coverage for public symbols
+* Have 100 percent branch code coverage from unit and integration tests
+* Have system tests which cover any scenarios covered in documentation
+* Have system tests for any corner cases encountered during testing
+* Must be >= version 1.0.0
+
+## Testing using rosbag files
+
+To test your node with previously recorded data you can use `rosbag` files. A good example of this is the [AMCL package](https://github.com/ros-planning/navigation/tree/melodic-devel/amcl)
