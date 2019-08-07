@@ -2,9 +2,11 @@
 
 ## Development in ROS
 
-Dev for ROS [lecture slides](http://courses.csail.mit.edu/6.141/spring2012/pub/lectures/Lec06-ROS.pdf) from MIT.
+Software development using ROS [lecture slides](http://courses.csail.mit.edu/6.141/spring2012/pub/lectures/Lec06-ROS.pdf) from MIT.
 
-ROS tutorials [link](http://wiki.ros.org/ROS/Tutorials)
+[ROS Industrial (Melodic) training exercises](https://industrial-training-master.readthedocs.io/en/melodic/)
+
+[ROS tutorials](http://wiki.ros.org/ROS/Tutorials)
 
 Beginner tutorials for developing in Python are [here](http://wiki.ros.org/rospy_tutorials/Tutorials).
 
@@ -16,7 +18,10 @@ A list of [best practices](https://github.com/leggedrobotics/ros_best_practices/
 
 ### Note about ROS2
 
-We're not focusing on ROS2 in this school but a starting point for this journey can be [this](https://github.com/ros2/ros2/wiki/Colcon-Tutorial) tutorial. As there are very few guides/materials about ROS2 and ROS2 is still under heavy development it is not recommended for inexperienced developers (this is especially true for testing).
+Why not use ROS2 in this course?
+ROS2 Dashing Diademata was released at the end of May 2019. As it currently stands, there are still many packages that have not been ported to ROS2 and there are still significant changes made to the design and build systems. There is also a lack of good cohesive documentation/tutorials and examples which increases the learning difficulty. As this is not strictly a ROS course, we believe that it will be easier and more time efficient to understand the big picture using ROS1.
+
+An article about the reasoning [why ROS2](http://design.ros2.org/articles/why_ros2.html) is needed.
 
 ## Unit testing in ROS
 
