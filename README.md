@@ -51,16 +51,7 @@ In general, for both Python unit and integration tests you want to do the follow
 
 ### ROS2 notes
 
-There are [guidelines](https://github.com/ros2/ros2/wiki/Developer-Guide#testing) for testing and quality assurance requirements for ROS2 packages.
-
-Requirements to be considered a 'Level 1' package:
-
-* Have a strictly declared public API
-* Have API documentation coverage for public symbols
-* Have 100 percent branch code coverage from unit and integration tests
-* Have system tests which cover any scenarios covered in documentation
-* Have system tests for any corner cases encountered during testing
-* Must be >= version 1.0.0
+There are [guidelines](https://index.ros.org/doc/ros2/Contributing/Developer-Guide/) for testing and quality assurance requirements for ROS2 packages.
 
 ## Testing using rosbag files
 
