@@ -12,7 +12,7 @@ catkin_init_workspace
 
 ```
 cd ~/workspace/src
-catkin_create_package mypackage rostest
+catkin_create_pkg mypackage rostest
 ```
 
 ## Add tests
