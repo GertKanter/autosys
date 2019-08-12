@@ -33,17 +33,11 @@ Good resource for learning "by example" is the [rospy_tutorials](https://github.
 
 `rostest` is very similar to `roslaunch`. The main difference is that it is designed to launch the tests as well as launching the nodes.
 
-Good tutorials available at [ros wiki](http://wiki.ros.org/rostest).
+Tutorials available at [ros wiki](http://wiki.ros.org/rostest).
 
 ### Workflow
-In general, for both Python unit and integration tests you want to do the following:
 
-* Create a class that subclasses from `unittest.TestCase` or other testing framework (e.g., pytest (see this [package](https://github.com/machinekoder/ros_pytest)))
-* Have a bunch of methods with the prefix "test_". Each represents a test case
-* Implement your tests in these methods using the assert*() calls (e.g.self.assertTrue)
-* Integration tests are the same except you create a ROS node handle within the test case and start publishing/subscribing. You perform checks in the exact same way as you do with unittest
-* For integration tests, you also want to add a `add_rostest` to your CMakeLists.txt file.
-* `catkin_make run_tests` in your catkin workspace
+Look at the steps [here](rostest.md)
 
 ### gtest
 
