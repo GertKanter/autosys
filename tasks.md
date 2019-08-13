@@ -36,7 +36,7 @@ Creating new message types and services is useful and in many cases good practic
 
 [Tutorial link](http://wiki.ros.org/ROS/Tutorials/Recording%20and%20playing%20back%20data)
 
-Recording data from ROS is very useful as it allows debugging and analysis of the behaviour after the fact.
+Recording data from ROS (`rosbag`)is very useful as it allows debugging and analysis of the behaviour after the fact.
 
 Playing back data can also be used for testing as the played back data seems to be "real" for the subscribed nodes.
 
