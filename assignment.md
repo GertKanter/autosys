@@ -44,3 +44,20 @@ Each robot is autonomous and decentralized without a supervisor. This means that
 * Signal that a robot has been detected (based on laser sensor information), type: `geometry_msgs.msg.PointStamped`
 
 Hint: X-axis of the laser points forward (frame)
+
+## Some helpful code
+
+```python
+import tf
+
+tf_listener = tf.TransformListener()
+def get_robot_pose(name):
+    try:
+        translation, rotation = tf_listener.lookupTransform("map", name + "/base_footprint", rospy.Time(0))
+    except (tf.LookupException, tf.ConnectivityException, tf.ExtrapolationException) as e:
+        rospy.logwarn_throttle(3.0, e)
+        rospy.sleep(0.1)
+        return get_robot_pose()
+    rospy.loginfo("Robot is at: %s" % self.pose[0])
+    return (translation, rotation)
+```
