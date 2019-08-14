@@ -61,3 +61,71 @@ def get_robot_pose(name):
     rospy.loginfo("Robot is at: %s" % self.pose[0])
     return (translation, rotation)
 ```
+
+```python
+import std_srvs.srv
+
+def clear_costmaps(name):
+    service_name = "/" + name + "/move_base_node/clear_costmaps"
+    rospy.loginfo("Waiting for service %s" % service_name)
+    rospy.wait_for_service(service_name)
+    try:
+	service = rospy.ServiceProxy(service_name, std_srvs.srv.Empty)
+	rospy.loginfo("Calling service!")
+	res = service()
+	rospy.loginfo("Service finished!")
+    except rospy.ServiceException, e:
+	rospy.logerr("Service call failed: %s" % e)
+
+```
+
+```python
+import actionlib
+import move_base_msgs.msg
+
+name = "robot_1"
+move_base_client = actionlib.SimpleActionClient(name + '/move_base', move_base_msgs.msg.MoveBaseAction)
+
+def goto_goal(name, goal, start, failure_counter=0):
+    if failure_counter > 10:
+	# Clear costmaps as last resort
+	rospy.logerr("Trying to clear costmaps!")
+	clear_costmaps(name)
+	failure_counter = 0
+    action_goal = move_base_msgs.msg.MoveBaseGoal()
+    action_goal.target_pose.header.frame_id = "map"
+    action_goal.target_pose.pose.position.x = goal['x']
+    action_goal.target_pose.pose.position.y = goal['y']
+    action_goal.target_pose.pose.position.z = 0
+    action_goal.target_pose.pose.orientation.x = 0
+    action_goal.target_pose.pose.orientation.y = 0
+    action_goal.target_pose.pose.orientation.z = 0
+    action_goal.target_pose.pose.orientation.w = 1
+    move_base_client.wait_for_server()
+    rospy.loginfo("Sending goal: %s" % action_goal)
+    move_base_client.send_goal(action_goal)
+    rospy.loginfo("Goal sent!")
+    result = move_base_client.wait_for_result()
+
+    state = move_base_client.get_state()
+    if state == actionlib.GoalStatus.SUCCEEDED:
+	# Make sure we succeeded by checking our pose vs goal
+	update_pose()
+	if euclidean_distance(self.pose[0], (goal['x'], goal['y'])) < 0.2:
+	    return True
+	else:
+	    failure_counter += 1
+	    rospy.sleep(1)
+	    rospy.logerr("False SUCCEEDED information (failure=%s)!" % failure_counter)
+	    self.goto_goal(start, goal, failure_counter)
+	    rospy.sleep(1)
+	    return self.goto_goal(goal, start, failure_counter) # Retry
+    else:
+	failure_counter += 1
+	rospy.logwarn("Goal not SUCCEEDED, return to start (failure=%s)!" % failure_counter)
+	rospy.sleep(1)
+	self.goto_goal(start, goal, failure_counter)
+	rospy.sleep(1)
+	return self.goto_goal(goal, start, failure_counter)
+
+```
