@@ -57,8 +57,8 @@ def get_robot_pose(name):
     except (tf.LookupException, tf.ConnectivityException, tf.ExtrapolationException) as e:
         rospy.logwarn_throttle(3.0, e)
         rospy.sleep(0.1)
-        return get_robot_pose()
-    rospy.loginfo("Robot is at: %s" % self.pose[0])
+        return get_robot_pose(name)
+    rospy.loginfo("Robot is at: %s" % translation)
     return (translation, rotation)
 ```
 
@@ -117,15 +117,15 @@ def goto_goal(name, goal, start, failure_counter=0):
 	    failure_counter += 1
 	    rospy.sleep(1)
 	    rospy.logerr("False SUCCEEDED information (failure=%s)!" % failure_counter)
-	    self.goto_goal(start, goal, failure_counter)
+	    goto_goal(start, goal, failure_counter)
 	    rospy.sleep(1)
-	    return self.goto_goal(goal, start, failure_counter) # Retry
+	    return goto_goal(goal, start, failure_counter) # Retry
     else:
 	failure_counter += 1
 	rospy.logwarn("Goal not SUCCEEDED, return to start (failure=%s)!" % failure_counter)
 	rospy.sleep(1)
-	self.goto_goal(start, goal, failure_counter)
+	goto_goal(start, goal, failure_counter)
 	rospy.sleep(1)
-	return self.goto_goal(goal, start, failure_counter)
+	return goto_goal(goal, start, failure_counter)
 
 ```
