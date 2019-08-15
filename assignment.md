@@ -47,6 +47,16 @@ Hint: X-axis of the laser points forward (frame)
 
 ## Some helpful code
 
+### planner.launch
+```
+<launch>
+  <rosparam command="load" ns="/autosys_planner" file="$(find autosys_planner)/cfg/map.yaml"/>
+  <!-- ... your other launch stuff -->
+</launch>
+```
+
+### get_pose
+
 ```python
 import tf
 
